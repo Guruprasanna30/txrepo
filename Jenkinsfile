@@ -38,6 +38,7 @@ pipeline {
             git add ${PACKAGE}-*.tgz
             git commit -m "new package created"
             git push
+	    '''
           }
         }
       }
