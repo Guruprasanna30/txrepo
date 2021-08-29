@@ -19,3 +19,8 @@ spec:
         items:
           - key: .dockerconfigjson
             path: config.json
+   - name: helm
+     image: 'guruprasanna30/helm'
+     tty: true
+     command: 
+     - cat

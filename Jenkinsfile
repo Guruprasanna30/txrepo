@@ -28,10 +28,18 @@ pipeline {
 
     stage('Deploy App to Kubernetes with helm') {     
       steps {
-        sh '''
-          cd api-chart
-          helm install myapi --set image.tag=${BUILD_NUMBER} .
-        '''
+        container('helm'){
+          script {
+            sh '''
+            PACKAGE=api-chart
+	    cp -r /home/helm/.helm ~
+            cd helm/${PACKAGE}
+            helm package .
+            git add ${PACKAGE}-*.tgz
+            git commit -m "new package created"
+            git push
+          }
+        }
       }
     }
   }
