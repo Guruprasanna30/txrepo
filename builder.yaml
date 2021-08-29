@@ -12,6 +12,12 @@ spec:
     volumeMounts:
       - name: kaniko-secret
         mountPath: /kaniko/.docker
+  - name: helm
+     image: 'guruprasanna30/helm'
+     tty: true
+     command:
+     - cat
+
   volumes:
     - name: kaniko-secret
       secret:
@@ -19,8 +25,3 @@ spec:
         items:
           - key: .dockerconfigjson
             path: config.json
-   - name: helm
-     image: 'guruprasanna30/helm'
-     tty: true
-     command: 
-     - cat
