@@ -13,6 +13,6 @@ fullnameOverride: ""
 service:
   type: ClusterIP
   port: 8085
-  targetPort: 8080
+  targetPort: 3000
 
 resources: {}
